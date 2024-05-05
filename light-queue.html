@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Queue</title>
+    <style>
+        body{
+            position: absolute;
+            background: #000;
+
+        }
+        main{
+            top: 25vh;
+            left: 25vw;
+
+            position: relative;
+        }
+        section{
+            display: flex;
+
+        }
+        div{
+            height: 50px;
+            margin: 20px;
+            aspect-ratio: 1/.5;
+            border: 2px solid black;
+            border-radius: 20px;
+            box-shadow: black 0px 0px 20px 0;
+
+
+        }
+        #last-light{
+            position: relative;
+            left: 50vw;
+        }
+        #first-light{
+            position: relative;
+            left: -17vw;
+        }
+    </style>
+</head>
+<body>
+<script src="assets/lib/jquery-3.7.1.min.js"></script>
+<main>
+    <div id="first-light"></div>
+    <hr>
+    <section>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </section>
+    <hr>
+    <div id="last-light"></div>
+</main>
+
+
+
+<script>
+    let divs = document.querySelectorAll("div");
+    let colors = ['red','blue','deeppink','purple','yellow','pink']
+    function remarray (){
+        let color = colors[colors.length-1];
+
+
+        colors.pop()
+        colors.unshift(color)
+
+
+        for (let i = 0; i < divs.length; i++) {
+            divs[i].style.background = colors[i];
+        }
+    }
+    setInterval(remarray,500);
+</script>
+</body>
+</html>

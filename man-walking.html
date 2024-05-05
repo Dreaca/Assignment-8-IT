@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MAN Walking</title>
+
+    <style>
+        body{
+            background:#e9e7e6;
+            overflow: hidden;
+        }
+        .man{
+            height: 100px;
+            aspect-ratio: 1/1;
+            margin: 20px;
+
+        }
+        .men{
+
+            display: flex;
+            position: relative;
+            top: 20vh;
+        }
+        main{
+            display: flex;
+            top: 20vh;
+            position: relative;
+        }
+        .house{
+            margin: 10px;
+            position: relative;
+            top: -1vh;
+        }
+        .letter{
+            font-family:fantasy;
+            color: deepskyblue;
+        }
+        hr{
+            position: relative;
+            top: 15vh;
+        }
+        .buttons{
+            position: relative;
+            top:20vh;
+            left: 45vw;
+        }
+    </style>
+</head>
+<body>
+<script src="assets/lib/jquery-3.7.1.min.js"></script>
+<main>
+    <section class="men">
+        <div class="man"><img src="assets/img/man.gif" alt="man walking" width="100px" height="100px"></div>
+        <div class="letter">A</div>
+        <div class="man"><img src="assets/img/man.gif" alt="man walking" width="100px" height="100px"></div>
+        <div class="letter">B</div>
+        <div class="man"><img src="assets/img/man.gif" alt="man walking" width="100px" height="100px"></div>
+        <div class="letter">C</div>
+        <div class="man"><img src="assets/img/man.gif" alt="man walking" width="100px" height="100px"></div>
+        <div class="letter">D</div>
+        <div class="man"><img src="assets/img/man.gif" alt="man walking" width="100px" height="100px"></div>
+        <div class="letter">E</div>
+        <div class="man"><img src="assets/img/man.gif" alt="man walking" width="100px" height="100px"></div>
+        <div class="letter">F</div>
+    </section>
+    <div class="house"><img src="assets/img/house.gif" alt="house" width="350px" height="250px"></div>
+</main>
+<hr>
+<div class="buttons">
+    <button id="start">START</button>
+    <button id="stop">STOP</button>
+</div>
+<script>
+    let stuff =["A","B","C","D","E","F"];
+    let divs = document.querySelectorAll(".letter");
+    let interval;
+    function letterQueue (){
+        let letter = stuff[stuff.length-1];
+
+        stuff.pop()
+        stuff.unshift(letter)
+        console.log(stuff)
+
+
+
+        for (let i = 0; i < divs.length; i++) {
+            divs[i].innerText = stuff[i];
+        }
+    }
+    $("#start").on('click',()=>{
+        interval = setInterval(letterQueue,2000);
+    })
+    $("#stop").on('click',()=>{
+        clearInterval(interval);
+    })
+
+</script>
+</body>
+</html>
